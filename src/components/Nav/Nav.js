@@ -34,7 +34,7 @@ const Nav = ({wrap, setWrap, activeSection, handleChange, isfirstWrap, changeFir
     if(activeSection[pageId]) {
       return;
     }
-    console.log('pageId', pageId)
+    // console.log('pageId', pageId)
     hideActiveElems(sceneNavLinks);
     e.currentTarget.classList.add('active');
     setLabelActive(e.currentTarget);

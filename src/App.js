@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Pace from './components/Pace/Pace';
 import Nav from './components/Nav/Nav';
 import Page0 from './components/Pages/Page_0';
@@ -13,6 +13,7 @@ import './App.css';
 function App() {
   const [isBodyClass, setIsBodyClass] = useState(false);
   const [isfirstWrap, setIsfirstWrap] = useState(false);
+  const [isDomLoaded, setIsDomLoaded] = useState(false);
   const [wrap, setWrap] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const [activeSection, setActiveSection] = useState({
@@ -40,18 +41,47 @@ function App() {
     }));
   };
 
-
   const classes = {
     pageWrap: `page_wrap ${isBodyClass ? 'visible' : ''}`
   }
 
+  const handleLoad = e => {
+    if(!isDomLoaded) {
+      setIsDomLoaded(true);
+    }
+  }
+
+  const handlingKeyboardEvents = e => {
+    if(isModal) {
+      return
+    }
+    // console.log(e.key);
+    // switch (e.key) {
+    //   case value:
+        
+    //     break;
+    
+    //   default:
+    //     break;
+    // }
+  }
+
+  useEffect(() => {
+    window.addEventListener('load', handleLoad);
+    window.addEventListener('keyup', handlingKeyboardEvents);
+    return () => {
+      window.removeEventListener('load', handleLoad);
+      window.removeEventListener('keyup', handlingKeyboardEvents);
+    }
+  }, [handlingKeyboardEvents])
+
   return (
     <>
-      <Pace handleChange={handleChange} setBodyClass={setIsBodyClass} />
+      <Pace isDomLoaded={isDomLoaded} handleChange={handleChange} setBodyClass={setIsBodyClass} />
       <div id="appWrapper" className="appWrapper">
         <div className="pace-blackout"></div>
         <Nav wrap={wrap} setWrap={setWrap} changeFirstWrap={setIsfirstWrap} isfirstWrap={isfirstWrap} activeSection={activeSection} handleChange={handleChange} />
-        <div className={classes.pageWrap}>{/* add visible class when need */}
+        <div className={classes.pageWrap}>
         {}
         {activeSection.isActive0 ?
           <Page0 setWrap={setWrap} changeFirstWrap={setIsfirstWrap} handleChange={handleChange} /> : null 

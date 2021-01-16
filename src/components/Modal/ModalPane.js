@@ -18,7 +18,9 @@ const ModalPane = ({item, stp, setIsModal, handleNextIndex, handlePrevIndex, sli
   const handleNextArrow = () => {
     arrowsTrigger.current.classList.add('nextClick');
     const timer = setTimeout(() => {
-      arrowsTrigger.current.classList.remove('nextClick');
+      if(arrowsTrigger.current) {
+        arrowsTrigger.current.classList.remove('nextClick');
+      }
       clearTimeout(timer)
     }, 400)
   }
@@ -26,7 +28,9 @@ const ModalPane = ({item, stp, setIsModal, handleNextIndex, handlePrevIndex, sli
   const handlePrevArrow = () => {
     arrowsTrigger.current.classList.add('prevClick');
     const timer = setTimeout(() => {
-      arrowsTrigger.current.classList.remove('prevClick');
+      if(arrowsTrigger.current) {
+        arrowsTrigger.current.classList.remove('prevClick');
+      }
       clearTimeout(timer)
     }, 400)
   }

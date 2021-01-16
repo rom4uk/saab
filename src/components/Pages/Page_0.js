@@ -22,7 +22,6 @@ const Page0 = ({setWrap, handleChange, changeFirstWrap}) => {
     setSceneNavLinks(document.querySelectorAll('.sceneNav__link'));
   }, [])
 
-  console.log('Page0')
   return (
     <div id="page_0" className="page active">
       <Logo handleChange={handleChange} isActiveTop={true} title={true} />
