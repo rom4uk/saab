@@ -135,7 +135,7 @@ const Page4 = ({handleChange}) => {
           </div>
         </div> 
         <div className="sidebar_footer">
-          <a href="https://www.saab.com/dam" target="_blank">saab.com/dam</a>
+          <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
         </div>
       </div> 
       <div className="scene_wrap">

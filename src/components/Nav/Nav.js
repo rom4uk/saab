@@ -21,6 +21,15 @@ const Nav = ({wrap, setWrap, activeSection, handleChange, isfirstWrap, changeFir
     }, 100)
   }
 
+  const setLabelActive = (domElem) => {
+    const label = domElem.querySelector('.sceneNav__label');
+    label.classList.add('active');
+    const timer = setTimeout(() => {
+      label.classList.remove('active');
+      clearTimeout(timer);
+    }, 1000)
+  }
+
   const changePages = (e, pageId, isWrapper) => {
     if(activeSection[pageId]) {
       return;
@@ -28,6 +37,7 @@ const Nav = ({wrap, setWrap, activeSection, handleChange, isfirstWrap, changeFir
     console.log('pageId', pageId)
     hideActiveElems(sceneNavLinks);
     e.currentTarget.classList.add('active');
+    setLabelActive(e.currentTarget);
     if(!isWrapper) {
       wrapDeactivate();
       changeFirstWrap(false);

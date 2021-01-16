@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { switchPageVisible, hideActiveElems} from '../../helpers/helpers';
-import logoLight from '../../img/logo/saab_logo_light.svg';
-import logoDark from '../../img/logo/saab_logo_dark.svg';
-
+import Logo from '../common/Logo';
 
 const Page0 = ({setWrap, handleChange, changeFirstWrap}) => {
   const [sceneNavLinks, setSceneNavLinks] = useState(null);
@@ -27,10 +25,7 @@ const Page0 = ({setWrap, handleChange, changeFirstWrap}) => {
   console.log('Page0')
   return (
     <div id="page_0" className="page active">
-      <div className="saab_logo title">
-        <img src={logoLight} alt="SAAB Logo" className=""/> 
-        <img src={logoDark} alt="SAAB Logo" className="active" />
-      </div> 
+      <Logo handleChange={handleChange} isActiveTop={true} title={true} />
       <div id="title_block" className="title_block">
         <div className="title_block__main">
           <div className="title_block__title">

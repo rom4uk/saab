@@ -1,15 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { hideActiveElems } from '../../helpers/helpers';
+import {progressButtons} from '../../helpers/slideData';
 import Logo from '../common/Logo';
+import ProgressButton from './elements/ProgressButton';
+
+import static48 from '../../icons/48hr_loader_static2d.svg'
 
 const Page14 = ({handleChange}) => {
   const buttonRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)]
   const imageRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)]
 
   let timers = [];
-
-  console.log(buttonRefs);
 
   const handleChangeOnButton = (idx, idxFromEvent) => {
     if(timers.length) {
@@ -19,7 +21,6 @@ const Page14 = ({handleChange}) => {
     hideActiveElems(imageRefs, true);
     const countIndex = idxFromEvent || idx;
     for (let index = 0; index < buttonRefs.length; index++) {
-      console.log('LOOP!!!!!!!!!!!!!!')
       if(index <= countIndex) {
         buttonRefs[index].current.classList.add('active');
         imageRefs[index].current.classList.add('active');
@@ -114,7 +115,7 @@ const Page14 = ({handleChange}) => {
           <text transform="matrix(1 0 0 1 72.6572 136.0178)" id="value">48</text> 
           <text transform="matrix(1 0 0 1 94.9658 166.4473)" id="hours">hrs</text>
         </svg> 
-        <img id="loader_48hr_static" src="icons/48hr_loader_static2d.svg" /> 
+        <img id="loader_48hr_static" src={static48} alt="" /> 
         <div className="scene_toggle_menu scene_toggle_menu--overlays">
           <div className="scene_toggle_menu__title">
             <svg width="24" height="24" viewBox="0 0 24 24" className="filter_icon">
@@ -123,34 +124,11 @@ const Page14 = ({handleChange}) => {
             <div className="scene_toggle_menu__title_label">View assembly stage</div>
           </div> 
           <div className="scene_toggle_menu__buttons">
-            <div className="progress_button " ref={buttonRefs[0]} onClick={() => handleChangeOnButton(0)}>
-              <span className="checkmark"></span> 
-              <span>Structure</span>
-            </div> 
-            <div className="progress_button " ref={buttonRefs[1]} onClick={() => handleChangeOnButton(1)}>
-              <span className="checkmark"></span> 
-              <span>Clam-shell openings</span>
-            </div> 
-            <div className="progress_button " ref={buttonRefs[2]} onClick={() => handleChangeOnButton(2)}>
-              <span className="checkmark"></span> 
-              <span>Docking modules</span>
-            </div> 
-            <div className="progress_button " ref={buttonRefs[3]} onClick={() => handleChangeOnButton(3)}>
-              <span className="checkmark"></span> 
-              <span>Maintenance containers</span>
-            </div> 
-            <div className="progress_button " ref={buttonRefs[4]} onClick={() => handleChangeOnButton(4)}>
-              <span className="checkmark"></span> 
-              <span>Multispectral protection</span>
-            </div> 
-            <div className="progress_button " ref={buttonRefs[5]} onClick={() => handleChangeOnButton(5)}>
-              <span className="checkmark"></span> 
-              <span>Assembly complete</span>
-            </div>
+            {progressButtons.map((button, i) => <ProgressButton key={i} refTo={buttonRefs[i]} title={button} idx={i} handleChangeOnButton={handleChangeOnButton} />)}
           </div>
         </div> 
         <div className="sidebar_footer">
-          <a href="https://www.saab.com/dam" target="_blank">saab.com/dam</a>
+          <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
         </div>
       </div> 
       <div className="scene_wrap">

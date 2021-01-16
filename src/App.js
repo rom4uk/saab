@@ -14,6 +14,7 @@ function App() {
   const [isBodyClass, setIsBodyClass] = useState(false);
   const [isfirstWrap, setIsfirstWrap] = useState(false);
   const [wrap, setWrap] = useState(false);
+  const [isModal, setIsModal] = useState(false);
   const [activeSection, setActiveSection] = useState({
     isActive0: false,
     isActive11: false,
@@ -44,32 +45,16 @@ function App() {
     pageWrap: `page_wrap ${isBodyClass ? 'visible' : ''}`
   }
 
-  // const active0 = useCallback(() => activeSection.isActive0, [activeSection.isActive0]);
-  const active11 = useCallback(() => activeSection.isActive11, [activeSection.isActive11]);
-  const active14 = useCallback(() => activeSection.isActive14, [activeSection.isActive14]);
-  const active15 = useCallback(() => activeSection.isActive15, [activeSection.isActive15]);
-  const active2 = useCallback(() => activeSection.isActive2, [activeSection.isActive2]);
-  const active3 = useCallback(() => activeSection.isActive3, [activeSection.isActive3]);
-  const active4 = useCallback(() => activeSection.isActive4, [activeSection.isActive4]);
-
   return (
     <>
       <Pace handleChange={handleChange} setBodyClass={setIsBodyClass} />
       <div id="appWrapper" className="appWrapper">
         <div className="pace-blackout"></div>
-        <Nav wrap={wrap} setWrap={setWrap} changeFirstWrap={setIsfirstWrap} isfirstWrap={isfirstWrap} activeSection={activeSection} handleChange={handleChange} /* handlers={{
-          handling0: setIsActive0,
-          handling11: setIsActive11,
-          handling14: setIsActive14,
-          handling15: setIsActive15,
-          handling2: setIsActive2,
-          handling3: setIsActive3,
-          handling4: setIsActive4,
-        }} */ />
+        <Nav wrap={wrap} setWrap={setWrap} changeFirstWrap={setIsfirstWrap} isfirstWrap={isfirstWrap} activeSection={activeSection} handleChange={handleChange} />
         <div className={classes.pageWrap}>{/* add visible class when need */}
         {}
         {activeSection.isActive0 ?
-          <Page0 setWrap={setWrap} changeFirstWrap={setIsfirstWrap} handleChange={handleChange} /* active0={active0} */ /> : null 
+          <Page0 setWrap={setWrap} changeFirstWrap={setIsfirstWrap} handleChange={handleChange} /> : null 
         }
         {activeSection.isActive11 ?
           <Page11 handleChange={handleChange} /> : null 
@@ -81,22 +66,15 @@ function App() {
           <Page15 handleChange={handleChange} /> : null 
         }
         {activeSection.isActive2 ?
-          <Page2 handleChange={handleChange} /> : null 
+          <Page2 isModal={isModal} setIsModal={setIsModal} handleChange={handleChange} /> : null 
         }
         {activeSection.isActive3 ?
-          <Page3 handleChange={handleChange} /> : null 
+          <Page3 isModal={isModal} setIsModal={setIsModal} handleChange={handleChange} /> : null 
         }
         {activeSection.isActive4 ?
           <Page4 handleChange={handleChange} /> : null 
         }
-          {/* <Page11 active11={active11} /> 
-          <Page14 active14={active14} />
-          <Page15 active15={active15} />
-          <Page2 active2={active2} />
-          <Page3 active3={active3} />
-          <Page4 active4={active4} />*/}
         </div>
-        <div className="modal_backdrop"></div>
       </div>
     </>
   );
