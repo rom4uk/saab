@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Logo from '../common/Logo';
 import { hideActiveElems } from '../../helpers/helpers';
 
-const Page11 = ({handleChange}) => {
+const Page1 = ({changePages}) => {
   const [replayCounter, setReplayCounter] = useState(0);
 
   const handleReplay = () => {
@@ -14,7 +14,6 @@ const Page11 = ({handleChange}) => {
       setReplayCounter(prev => prev + 1);
     }
   }
-
 
   useEffect(() => {
     let timers = [];
@@ -62,7 +61,7 @@ const Page11 = ({handleChange}) => {
   return (
     <div id="page_1_1" className="page active">
       <div className="sidebar">
-        <Logo handleChange={handleChange} isActiveTop={true} />
+        <Logo handleChange={changePages} isActiveTop={true} />
         <div className="sidebar_textbox">
           <div className="sidebar_textbox__header">
             <span className="sidebar_textbox__title">Rapid deployment</span>
@@ -116,4 +115,4 @@ const Page11 = ({handleChange}) => {
   )
 }
 
-export default Page11;
+export default Page1;

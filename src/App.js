@@ -1,13 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Pace from './components/Pace/Pace';
 import Nav from './components/Nav/Nav';
 import Page0 from './components/Pages/Page_0';
-import Page11 from './components/Pages/Page_1_1';
-import Page14 from './components/Pages/Page_1_4';
-import Page15 from './components/Pages/Page_1_5';
+import Page1 from './components/Pages/Page_1';
 import Page2 from './components/Pages/Page_2';
 import Page3 from './components/Pages/Page_3';
 import Page4 from './components/Pages/Page_4';
+import Page5 from './components/Pages/Page_5';
+import Page6 from './components/Pages/Page_6';
+
+import { 
+  switchPageVisible, 
+  hideActiveElems, 
+  setLabelActive, 
+  wrapActivate, 
+  wrapDeactivate
+} from './helpers/helpers';
+
 import './App.css';
 
 function App() {
@@ -16,15 +25,18 @@ function App() {
   const [isDomLoaded, setIsDomLoaded] = useState(false);
   const [wrap, setWrap] = useState(false);
   const [isModal, setIsModal] = useState(false);
+  const [currentPageIdx, setCurrentPageIdx] = useState(0);
   const [activeSection, setActiveSection] = useState({
     isActive0: false,
-    isActive11: false,
-    isActive14: false,
-    isActive15: false,
+    isActive1: false,
     isActive2: false,
     isActive3: false,
-    isActive4: false
+    isActive4: false,
+    isActive5: false,
+    isActive6: false
   })
+
+  const navRef = useRef(null);
 
   const handleChange = (name) => {
     let newState = {...activeSection};
@@ -51,19 +63,48 @@ function App() {
     }
   }
 
-  const handlingKeyboardEvents = e => {
-    if(isModal) {
-      return
+  const changePages = (pageId) => {
+    if(activeSection[pageId]) {
+      return;
     }
-    // console.log(e.key);
-    // switch (e.key) {
-    //   case value:
-        
-    //     break;
-    
-    //   default:
-    //     break;
-    // }
+    let pageIdx = +pageId.charAt(pageId.length - 1);
+    const navLinks = navRef.current.querySelectorAll('.sceneNav__link');
+    hideActiveElems(navLinks);
+    navLinks[pageIdx].classList.add('active');
+    setLabelActive(navLinks[pageIdx]);
+    if(!(pageIdx > 0 && pageIdx < 4)) {
+      wrapDeactivate(setWrap);
+      setIsfirstWrap(false);
+    }
+    if(pageIdx > 0 && pageIdx < 4) {
+      wrapActivate(setWrap);
+    }
+    switchPageVisible();
+    setTimeout(() => {
+      setCurrentPageIdx(prev => pageIdx);
+      handleChange(pageId);
+    }, 300);
+  }
+
+  const handlingKeyboardEvents = e => {
+    if(isModal) return;
+    const nav = navRef.current;
+    switch (e.key) {
+      case "ArrowUp":
+        let prevIndex = +currentPageIdx - 1;
+        if(prevIndex < 0) return;
+        changePages(`isActive${prevIndex}`);
+        setCurrentPageIdx(prev => prevIndex);
+        break;
+      case "ArrowDown":
+        let nextIndex = +currentPageIdx + 1;
+        if(nextIndex > Object.keys(activeSection).length - 1) return;
+        changePages(`isActive${nextIndex}`);
+        setCurrentPageIdx(prev => nextIndex);
+        break;
+      default:
+        break;
+    }
   }
 
   useEffect(() => {
@@ -77,32 +118,41 @@ function App() {
 
   return (
     <>
-      <Pace isDomLoaded={isDomLoaded} handleChange={handleChange} setBodyClass={setIsBodyClass} />
+      <Pace 
+        isDomLoaded={isDomLoaded} 
+        handleChange={handleChange} 
+        setBodyClass={setIsBodyClass} 
+      />
       <div id="appWrapper" className="appWrapper">
         <div className="pace-blackout"></div>
-        <Nav wrap={wrap} setWrap={setWrap} changeFirstWrap={setIsfirstWrap} isfirstWrap={isfirstWrap} activeSection={activeSection} handleChange={handleChange} />
+        <Nav 
+          wrap={wrap}
+          isfirstWrap={isfirstWrap}
+          navRef={navRef}
+          changePages={changePages}
+        />
         <div className={classes.pageWrap}>
         {}
         {activeSection.isActive0 ?
-          <Page0 setWrap={setWrap} changeFirstWrap={setIsfirstWrap} handleChange={handleChange} /> : null 
+          <Page0 setCurrentPageIdx={setCurrentPageIdx} setWrap={setWrap} changeFirstWrap={setIsfirstWrap} changePages={changePages} /> : null 
         }
-        {activeSection.isActive11 ?
-          <Page11 handleChange={handleChange} /> : null 
-        }
-        {activeSection.isActive14 ?
-          <Page14 handleChange={handleChange} /> : null 
-        }
-        {activeSection.isActive15 ?
-          <Page15 handleChange={handleChange} /> : null 
+        {activeSection.isActive1 ?
+          <Page1 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
         }
         {activeSection.isActive2 ?
-          <Page2 isModal={isModal} setIsModal={setIsModal} handleChange={handleChange} /> : null 
+          <Page2 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
         }
         {activeSection.isActive3 ?
-          <Page3 isModal={isModal} setIsModal={setIsModal} handleChange={handleChange} /> : null 
+          <Page3 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
         }
         {activeSection.isActive4 ?
-          <Page4 handleChange={handleChange} /> : null 
+          <Page4 setCurrentPageIdx={setCurrentPageIdx} isModal={isModal} setIsModal={setIsModal} changePages={changePages} /> : null 
+        }
+        {activeSection.isActive5 ?
+          <Page5 setCurrentPageIdx={setCurrentPageIdx} isModal={isModal} setIsModal={setIsModal} changePages={changePages} /> : null 
+        }
+        {activeSection.isActive6 ?
+          <Page6 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
         }
         </div>
       </div>
