@@ -21,7 +21,30 @@ function switchPageVisible() {
   }, 300)
 }
 
+const setLabelActive = (nav) => {
+  const label = nav.querySelector('.sceneNav__label');
+  label.classList.add('active');
+  const timer = setTimeout(() => {
+    label.classList.remove('active');
+    clearTimeout(timer);
+  }, 1000)
+}
+
+const wrapActivate = (cb) => {
+  setTimeout(() => {
+    cb(true)
+  }, 100)
+}
+const wrapDeactivate = (cb) => {
+  setTimeout(() => {
+    cb(false)
+  }, 100)
+}
+
 export {
   hideActiveElems,
-  switchPageVisible
+  switchPageVisible,
+  setLabelActive,
+  wrapActivate,
+  wrapDeactivate
 }

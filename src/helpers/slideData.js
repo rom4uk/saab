@@ -169,7 +169,7 @@ export const stp = [
   },
 ]
 
-export const page3Data = [
+export const page5Data = [
   {
     img: ultraVioletSvg,
     alt: 'Ultra violet',

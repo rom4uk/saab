@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Logo from '../common/Logo';
 import { hideActiveElems } from '../../helpers/helpers';
 
-const Page11 = ({handleChange}) => {
+const Page1 = ({handleChange}) => {
   const [replayCounter, setReplayCounter] = useState(0);
 
   const handleReplay = () => {
@@ -14,7 +14,6 @@ const Page11 = ({handleChange}) => {
       setReplayCounter(prev => prev + 1);
     }
   }
-
 
   useEffect(() => {
     let timers = [];
@@ -116,4 +115,4 @@ const Page11 = ({handleChange}) => {
   )
 }
 
-export default Page11;
+export default Page1;
