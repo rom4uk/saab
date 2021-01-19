@@ -113,9 +113,9 @@ const Page3 = ({changePages}) => {
             </div>
           </div>
         </div> 
-        <div className="sidebar_footer">
+        {/* <div className="sidebar_footer">
           <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
-        </div>
+        </div> */}
       </div> 
       <div className="scene_wrap">
         <div className="hotswap_wrap hotswap_wrap--normal active">

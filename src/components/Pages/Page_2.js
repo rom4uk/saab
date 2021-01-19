@@ -127,9 +127,9 @@ const Page2 = ({changePages}) => {
             {progressButtons.map((button, i) => <ProgressButton key={i} refTo={buttonRefs[i]} title={button} idx={i} handleChangeOnButton={handleChangeOnButton} />)}
           </div>
         </div> 
-        <div className="sidebar_footer">
+        {/* <div className="sidebar_footer">
           <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
-        </div>
+        </div> */}
       </div> 
       <div className="scene_wrap">
         <div className="progress_anim_wrap">

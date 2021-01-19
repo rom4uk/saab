@@ -109,9 +109,9 @@ const Page5 = ({changePages, setIsModal, isModal}) => {
             </div>
           </div>
         </div> 
-        <div className="sidebar_footer">
+        {/* <div className="sidebar_footer">
           <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
-        </div>
+        </div> */}
       </div> 
       <div className="scene_wrap">
         <div className="scene_wrap__inner">

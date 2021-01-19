@@ -117,9 +117,9 @@ const Page6 = ({changePages}) => {
             {page6ButtonsConfig.map((button, i) => <HotswapButton Elem={button.icon} title={button.title} className={buttonClasses[button.classname]} handler={toggleItems} idx={i} key={i} />)}
           </div>
         </div> 
-        <div className="sidebar_footer">
+        {/* <div className="sidebar_footer">
           <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
-        </div>
+        </div> */}
       </div> 
       <div className="scene_wrap">
         <div className="scene_icon_wrap clearfix">
