@@ -56,8 +56,7 @@ function App() {
   const classes = {
     pageWrap: `page_wrap ${isBodyClass ? 'visible' : ''}`
   }
-
-  const handleLoad = e => {
+  const handleLoad = () => {
     if(!isDomLoaded) {
       setIsDomLoaded(true);
     }
@@ -108,10 +107,11 @@ function App() {
   }
 
   useEffect(() => {
-    window.addEventListener('load', handleLoad);
+    handleLoad();
+    // window.addEventListener('load', handleLoad);
     window.addEventListener('keyup', handlingKeyboardEvents);
     return () => {
-      window.removeEventListener('load', handleLoad);
+      // window.removeEventListener('load', handleLoad);
       window.removeEventListener('keyup', handlingKeyboardEvents);
     }
   }, [handlingKeyboardEvents])
