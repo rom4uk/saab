@@ -32,8 +32,8 @@ function App() {
     isActive2: false,
     isActive3: false,
     isActive4: false,
-    isActive5: false,
-    isActive6: false
+    isActive5: false
+    // isActive6: false
   })
 
   const navRef = useRef(null);
@@ -72,11 +72,11 @@ function App() {
     hideActiveElems(navLinks);
     navLinks[pageIdx].classList.add('active');
     setLabelActive(navLinks[pageIdx]);
-    if(!(pageIdx > 0 && pageIdx < 4)) {
+    if(!(pageIdx > 0 && pageIdx < 3)) {
       wrapDeactivate(setWrap);
       setIsfirstWrap(false);
     }
-    if(pageIdx > 0 && pageIdx < 4) {
+    if(pageIdx > 0 && pageIdx < 3) {
       wrapActivate(setWrap);
     }
     switchPageVisible();
@@ -108,10 +108,9 @@ function App() {
   }
 
   useEffect(() => {
-    window.addEventListener('load', handleLoad);
+    handleLoad()
     window.addEventListener('keyup', handlingKeyboardEvents);
     return () => {
-      window.removeEventListener('load', handleLoad);
       window.removeEventListener('keyup', handlingKeyboardEvents);
     }
   }, [handlingKeyboardEvents])
@@ -143,17 +142,17 @@ function App() {
           <Page2 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
         }
         {activeSection.isActive3 ?
-          <Page3 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
+          <Page4 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
         }
         {activeSection.isActive4 ?
-          <Page4 setCurrentPageIdx={setCurrentPageIdx} isModal={isModal} setIsModal={setIsModal} changePages={changePages} /> : null 
-        }
-        {activeSection.isActive5 ?
           <Page5 setCurrentPageIdx={setCurrentPageIdx} isModal={isModal} setIsModal={setIsModal} changePages={changePages} /> : null 
         }
-        {activeSection.isActive6 ?
-          <Page6 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
+        {activeSection.isActive5 ?
+          <Page6 setCurrentPageIdx={setCurrentPageIdx} isModal={isModal} setIsModal={setIsModal} changePages={changePages} /> : null 
         }
+        {/* {activeSection.isActive6 ?
+          <Page6 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
+        } */}
         </div>
       </div>
     </>
