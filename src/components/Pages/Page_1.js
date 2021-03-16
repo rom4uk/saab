@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Logo from '../common/Logo';
 import { hideActiveElems } from '../../helpers/helpers';
 
-const Page1 = ({handleChange}) => {
+const Page1 = ({changePages}) => {
   const [replayCounter, setReplayCounter] = useState(0);
 
   const handleReplay = () => {
@@ -61,7 +61,7 @@ const Page1 = ({handleChange}) => {
   return (
     <div id="page_1_1" className="page active">
       <div className="sidebar">
-        <Logo handleChange={handleChange} isActiveTop={true} />
+        <Logo handleChange={changePages} isActiveTop={true} />
         <div className="sidebar_textbox">
           <div className="sidebar_textbox__header">
             <span className="sidebar_textbox__title">Rapid deployment</span>
@@ -84,9 +84,9 @@ const Page1 = ({handleChange}) => {
           </svg> 
           <span>Replay animation</span>
         </div> 
-        <div className="sidebar_footer">
+        {/* <div className="sidebar_footer">
           <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
-        </div>
+        </div> */}
       </div> 
       <div className="scene_wrap">
         <div className="step_anim_wrap">

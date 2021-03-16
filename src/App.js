@@ -32,8 +32,8 @@ function App() {
     isActive2: false,
     isActive3: false,
     isActive4: false,
-    isActive5: false,
-    isActive6: false
+    isActive5: false
+    // isActive6: false
   })
 
   const navRef = useRef(null);
@@ -56,8 +56,7 @@ function App() {
   const classes = {
     pageWrap: `page_wrap ${isBodyClass ? 'visible' : ''}`
   }
-
-  const handleLoad = e => {
+  const handleLoad = () => {
     if(!isDomLoaded) {
       setIsDomLoaded(true);
     }
@@ -72,11 +71,11 @@ function App() {
     hideActiveElems(navLinks);
     navLinks[pageIdx].classList.add('active');
     setLabelActive(navLinks[pageIdx]);
-    if(!(pageIdx > 0 && pageIdx < 4)) {
+    if(!(pageIdx > 0 && pageIdx < 3)) {
       wrapDeactivate(setWrap);
       setIsfirstWrap(false);
     }
-    if(pageIdx > 0 && pageIdx < 4) {
+    if(pageIdx > 0 && pageIdx < 3) {
       wrapActivate(setWrap);
     }
     switchPageVisible();
@@ -108,10 +107,9 @@ function App() {
   }
 
   useEffect(() => {
-    window.addEventListener('load', handleLoad);
+    handleLoad()
     window.addEventListener('keyup', handlingKeyboardEvents);
     return () => {
-      window.removeEventListener('load', handleLoad);
       window.removeEventListener('keyup', handlingKeyboardEvents);
     }
   }, [handlingKeyboardEvents])
@@ -126,40 +124,34 @@ function App() {
       <div id="appWrapper" className="appWrapper">
         <div className="pace-blackout"></div>
         <Nav 
-          currentPageIdx={currentPageIdx} 
-          setCurrentPageIdx={setCurrentPageIdx} 
-          wrap={wrap} 
-          setWrap={setWrap} 
-          setIsfirstWrap={setIsfirstWrap} 
-          isfirstWrap={isfirstWrap} 
-          activeSection={activeSection} 
-          handleChange={handleChange} 
+          wrap={wrap}
+          isfirstWrap={isfirstWrap}
           navRef={navRef}
           changePages={changePages}
         />
         <div className={classes.pageWrap}>
         {}
         {activeSection.isActive0 ?
-          <Page0 setCurrentPageIdx={setCurrentPageIdx} setWrap={setWrap} changeFirstWrap={setIsfirstWrap} handleChange={handleChange} /> : null 
+          <Page0 setCurrentPageIdx={setCurrentPageIdx} setWrap={setWrap} changeFirstWrap={setIsfirstWrap} changePages={changePages} /> : null 
         }
         {activeSection.isActive1 ?
-          <Page1 setCurrentPageIdx={setCurrentPageIdx} handleChange={handleChange} /> : null 
+          <Page1 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
         }
         {activeSection.isActive2 ?
-          <Page2 setCurrentPageIdx={setCurrentPageIdx} handleChange={handleChange} /> : null 
+          <Page2 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
         }
         {activeSection.isActive3 ?
-          <Page3 setCurrentPageIdx={setCurrentPageIdx} handleChange={handleChange} /> : null 
+          <Page4 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} isModal={isModal} setIsModal={setIsModal} /> : null 
         }
         {activeSection.isActive4 ?
-          <Page4 setCurrentPageIdx={setCurrentPageIdx} isModal={isModal} setIsModal={setIsModal} handleChange={handleChange} /> : null 
+          <Page5 setCurrentPageIdx={setCurrentPageIdx} isModal={isModal} setIsModal={setIsModal} changePages={changePages} /> : null 
         }
         {activeSection.isActive5 ?
-          <Page5 setCurrentPageIdx={setCurrentPageIdx} isModal={isModal} setIsModal={setIsModal} handleChange={handleChange} /> : null 
+          <Page6 setCurrentPageIdx={setCurrentPageIdx} isModal={isModal} setIsModal={setIsModal} changePages={changePages} /> : null 
         }
-        {activeSection.isActive6 ?
-          <Page6 setCurrentPageIdx={setCurrentPageIdx} handleChange={handleChange} /> : null 
-        }
+        {/* {activeSection.isActive6 ?
+          <Page6 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
+        } */}
         </div>
       </div>
     </>

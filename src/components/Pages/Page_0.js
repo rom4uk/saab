@@ -1,30 +1,10 @@
-import { useState, useEffect } from 'react';
-
-import { switchPageVisible, hideActiveElems} from '../../helpers/helpers';
 import Logo from '../common/Logo';
 
-const Page0 = ({setWrap, handleChange, changeFirstWrap}) => {
-  const [sceneNavLinks, setSceneNavLinks] = useState(null);
-
-  const deploy = () => {
-    hideActiveElems(sceneNavLinks); //деактивуєм всі нави
-    switchPageVisible(); //переключаєм екран
-    changeFirstWrap(true);//активуєм 11 екран в навігації
-    setTimeout(() => {
-      setWrap(true)
-    }, 100)
-    setTimeout(() => {
-      handleChange('isActive11');
-    }, 300);
-  }
-
-  useEffect(() => {
-    setSceneNavLinks(document.querySelectorAll('.sceneNav__link'));
-  }, [])
+const Page0 = ({ changePages }) => {
 
   return (
     <div id="page_0" className="page active">
-      <Logo handleChange={handleChange} isActiveTop={true} title={true} />
+      <Logo handleChange={changePages} isActiveTop={true} title={true} />
       <div id="title_block" className="title_block">
         <div className="title_block__main">
           <div className="title_block__title">
@@ -42,7 +22,7 @@ const Page0 = ({setWrap, handleChange, changeFirstWrap}) => {
           </div>
         </div>
         </div> 
-        <div className="mission_cta_two" onClick={() => deploy()}>
+        <div className="mission_cta_two" onClick={() => changePages('isActive1')}>
           <div className="ui_highlight active">
             <div className="bg"></div> 
             <div className="fg">

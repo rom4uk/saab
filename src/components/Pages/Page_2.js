@@ -7,9 +7,9 @@ import ProgressButton from './elements/ProgressButton';
 
 import static48 from '../../icons/48hr_loader_static2d.svg'
 
-const Page2 = ({handleChange}) => {
-  const buttonRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)]
-  const imageRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)]
+const Page2 = ({changePages}) => {
+  const buttonRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)/* , useRef(null) */]
+  const imageRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)/* , useRef(null) */]
 
   let timers = [];
 
@@ -64,7 +64,7 @@ const Page2 = ({handleChange}) => {
       for (let idx = 0; idx < buttonsNode.length; idx++) {
         buttonsNode[idx].classList.remove('active');
         imagesNode[idx].classList.remove('active');
-        timeout += 700;
+        timeout += 840;
         const timer = setTimeout(() => {
           if(idx !== imagesNode.length - 1) {
             buttonsNode[idx].classList.add('active');
@@ -92,7 +92,7 @@ const Page2 = ({handleChange}) => {
   return (
     <div id="page_1_4" className="page active">
       <div className="sidebar">
-        <Logo handleChange={handleChange} isActiveTop={true} />
+        <Logo handleChange={changePages} isActiveTop={true} />
         <div className="sidebar_textbox">
           <div className="sidebar_textbox__header">
             <span className="sidebar_textbox__title">Assembly</span>
@@ -127,20 +127,23 @@ const Page2 = ({handleChange}) => {
             {progressButtons.map((button, i) => <ProgressButton key={i} refTo={buttonRefs[i]} title={button} idx={i} handleChangeOnButton={handleChangeOnButton} />)}
           </div>
         </div> 
-        <div className="sidebar_footer">
+        {/* <div className="sidebar_footer">
           <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
-        </div>
+        </div> */}
       </div> 
       <div className="scene_wrap">
         <div className="progress_anim_wrap">
           <div id="page_1_4_page_1_4_none" className="progress_anim_frame base"></div> 
-          <div id="page_1_4_page_1_4_frame" ref={imageRefs[0]} className="progress_anim_frame"></div> <div id="page_1_4_page_1_4_shell_clam" ref={imageRefs[1]} className="progress_anim_frame">
+          <div id="page_1_4_page_1_4_frame" ref={imageRefs[0]} className="progress_anim_frame">
+          </div> 
+          <div id="page_1_4_page_1_4_shell_clam" ref={imageRefs[1]} className="progress_anim_frame">
           </div> 
           <div id="page_1_4_page_1_4_entrances" ref={imageRefs[2]} className="progress_anim_frame">
           </div> 
           <div id="page_1_4_page_1_4_containers" ref={imageRefs[3]} className="progress_anim_frame">
           </div> 
-          <div id="page_1_4_page_1_4_camo" ref={imageRefs[4]} className="progress_anim_frame"></div> <div id="page_1_4_page_1_4_camo_closed"  ref={imageRefs[5]} className="progress_anim_frame "></div>
+          <div id="page_1_4_page_1_4_camo" ref={imageRefs[4]} className="progress_anim_frame"></div> 
+          {/* <div id="page_1_4_page_1_4_camo_closed" ref={imageRefs[5]} className="progress_anim_frame "></div> */}
         </div>
       </div>
     </div>

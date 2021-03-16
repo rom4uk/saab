@@ -197,4 +197,4 @@ export const page5Data = [
   }
 ]
 
-export const progressButtons = ['Structure', 'Clam-shell openings', 'Docking modules', 'Maintenance containers', 'Multispectral protection', 'Assembly complete']
+export const progressButtons = ['Structure', 'Clam-shell openings', 'Docking modules', 'Maintenance containers', 'Multispectral protection'/* , 'Assembly complete' */]

@@ -15,7 +15,7 @@ import rain from '../../video/rain_video.mp4'
 import wind from '../../video/wind_video.mp4'
 import snow from '../../video/snow_video.mp4'
 
-const Page6 = ({handleChange}) => {
+const Page6 = ({changePages}) => {
   const [toggledItems, setToggledItems] = useState({
     0: true,
     1: false,
@@ -80,11 +80,10 @@ const Page6 = ({handleChange}) => {
     }
   }, [handlingExpanded])
 
-
   return (
     <div id="page_4" className="page active">
       <div className="sidebar">
-        <Logo handleChange={handleChange} isActiveTop={true} />
+        <Logo handleChange={changePages} isActiveTop={true} />
         <div className="sidebar_textbox">
           <div className="sidebar_textbox__header">
             <span className="sidebar_textbox__title">A System for All&nbsp;Conditions</span>
@@ -118,9 +117,9 @@ const Page6 = ({handleChange}) => {
             {page6ButtonsConfig.map((button, i) => <HotswapButton Elem={button.icon} title={button.title} className={buttonClasses[button.classname]} handler={toggleItems} idx={i} key={i} />)}
           </div>
         </div> 
-        <div className="sidebar_footer">
+        {/* <div className="sidebar_footer">
           <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
-        </div>
+        </div> */}
       </div> 
       <div className="scene_wrap">
         <div className="scene_icon_wrap clearfix">

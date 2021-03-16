@@ -4,7 +4,7 @@ import Logo from '../common/Logo';
 import {page3ButtonsConfig} from './elements/buttonsConfig';
 import HotswapButton from './elements/HotswapButton'
 
-const Page3 = ({handleChange}) => {
+const Page3 = ({changePages}) => {
   const [expanded, setExpanded] = useState(false);
   const [toggledItems, setToggledItems] = useState({
     0: false,
@@ -68,7 +68,7 @@ const Page3 = ({handleChange}) => {
   return (
     <div id="page_1_5" className="page active">
       <div className="sidebar">
-        <Logo handleChange={handleChange} isActiveTop={true} />
+        <Logo handleChange={changePages} isActiveTop={true} />
         <div className="sidebar_textbox">
           <div className="sidebar_textbox__header">
             <span className="sidebar_textbox__title">A multipurpose asset</span>
@@ -113,9 +113,9 @@ const Page3 = ({handleChange}) => {
             </div>
           </div>
         </div> 
-        <div className="sidebar_footer">
+        {/* <div className="sidebar_footer">
           <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
-        </div>
+        </div> */}
       </div> 
       <div className="scene_wrap">
         <div className="hotswap_wrap hotswap_wrap--normal active">

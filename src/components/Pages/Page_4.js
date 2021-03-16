@@ -5,7 +5,7 @@ import ModalPane from '../Modal/ModalPane';
 import {container} from '../../helpers/slideData';
 import ContainerItem from './elements/ContainerItem';
 
-const Page4 = ({handleChange, setIsModal, isModal}) => {
+const Page4 = ({changePages, setIsModal, isModal}) => {
   const [slideIdx, setSlideIdx] = useState(0);
 
   const handleNextIndex = (idx) => {
@@ -23,7 +23,6 @@ const Page4 = ({handleChange, setIsModal, isModal}) => {
     }
     setSlideIdx(prev => prevIdx);
   }
-
 
   const handleClick = (e) => {
     switch (e.key) {
@@ -116,7 +115,7 @@ const Page4 = ({handleChange, setIsModal, isModal}) => {
       <div id="page_2" className="page active">
         <div className="sidebar">
           <div className="saab_logo">
-          <Logo handleChange={handleChange} isActiveTop={true} />
+          <Logo handleChange={changePages} isActiveTop={true} />
           </div> 
           <div className="sidebar_textbox">
             <div className="sidebar_textbox__header">
@@ -139,9 +138,9 @@ const Page4 = ({handleChange, setIsModal, isModal}) => {
               </div>
             </div>
           </div> 
-          <div className="sidebar_footer">
+          {/* <div className="sidebar_footer">
             <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
-          </div>
+          </div> */}
         </div> 
         <div className="scene_wrap">
           <div className="scene_wrap__inner">

@@ -30,16 +30,16 @@ const Nav = ({ wrap, isfirstWrap, navRef, changePages }) => (
           <div className="sceneNav__label__inner">Assembly</div>
         </div>
       </div> 
-      <div className="sceneNav__link" onClick={(e) => {changePages('isActive3')}}>
+      {/* <div className="sceneNav__link" onClick={(e) => {changePages('isActive3')}}>
         <div className="spot_bg">
           <div className="spot"></div>
         </div> 
         <div className="sceneNav__label">
           <div className="sceneNav__label__inner">A&nbsp;multipurpose asset</div>
         </div>
-      </div>
+      </div> */}
     </div> 
-    <div onClick={(e) => {changePages('isActive4')}} className="sceneNav__link">
+    <div onClick={(e) => {changePages('isActive3')}} className="sceneNav__link">
       <div className="spot_bg">
         <div className="spot"></div>
       </div> 
@@ -47,7 +47,7 @@ const Nav = ({ wrap, isfirstWrap, navRef, changePages }) => (
         <div className="sceneNav__label__inner">Maintenance&nbsp;containers</div>
       </div>
     </div> 
-    <div onClick={(e) => {changePages('isActive5')}} className="sceneNav__link">
+    <div onClick={(e) => {changePages('isActive4')}} className="sceneNav__link">
       <div className="spot_bg">
         <div className="spot"></div>
       </div> 
@@ -55,7 +55,7 @@ const Nav = ({ wrap, isfirstWrap, navRef, changePages }) => (
         <div className="sceneNav__label__inner">Multispectral&nbsp;protection</div>
       </div>
     </div> 
-    <div onClick={(e) => {changePages('isActive6')}} className="sceneNav__link">
+    <div onClick={(e) => {changePages('isActive5')}} className="sceneNav__link">
       <div className="spot_bg">
         <div className="spot"></div>
       </div> 

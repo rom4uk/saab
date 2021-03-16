@@ -6,7 +6,7 @@ import ModalPane from '../Modal/ModalPane';
 import StpItem from './elements/StpItem';
 import Logo from '../common/Logo';
 
-const Page5 = ({handleChange, setIsModal, isModal}) => {
+const Page5 = ({changePages, setIsModal, isModal}) => {
   const [slideIdx, setSlideIdx] = useState(0);
 
   const handleNextIndex = (idx) => {
@@ -85,7 +85,7 @@ const Page5 = ({handleChange, setIsModal, isModal}) => {
     {isModal ? <ModalPane handlePrevIndex={handlePrevIndex} handleNextIndex={handleNextIndex} slideIdx={slideIdx} setSlideIdx={setSlideIdx} setIsModal={setIsModal} stp={true} item={stp[slideIdx]} /> : null}
     <div id="page_3" className="page active">
       <div className="sidebar">
-        <Logo handleChange={handleChange} isActiveTop={true} />
+        <Logo handleChange={changePages} isActiveTop={true} />
         <div className="sidebar_textbox">
           <div className="sidebar_textbox__header">
             <span className="sidebar_textbox__title">Multispectral Protection</span>
@@ -109,9 +109,9 @@ const Page5 = ({handleChange, setIsModal, isModal}) => {
             </div>
           </div>
         </div> 
-        <div className="sidebar_footer">
+        {/* <div className="sidebar_footer">
           <a href="https://www.saab.com/dam" target="_blank" rel="noreferrer">saab.com/dam</a>
-        </div>
+        </div> */}
       </div> 
       <div className="scene_wrap">
         <div className="scene_wrap__inner">
