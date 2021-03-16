@@ -56,8 +56,7 @@ function App() {
   const classes = {
     pageWrap: `page_wrap ${isBodyClass ? 'visible' : ''}`
   }
-
-  const handleLoad = e => {
+  const handleLoad = () => {
     if(!isDomLoaded) {
       setIsDomLoaded(true);
     }
