@@ -142,7 +142,7 @@ function App() {
           <Page2 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
         }
         {activeSection.isActive3 ?
-          <Page4 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} /> : null 
+          <Page4 setCurrentPageIdx={setCurrentPageIdx} changePages={changePages} isModal={isModal} setIsModal={setIsModal} /> : null 
         }
         {activeSection.isActive4 ?
           <Page5 setCurrentPageIdx={setCurrentPageIdx} isModal={isModal} setIsModal={setIsModal} changePages={changePages} /> : null 
