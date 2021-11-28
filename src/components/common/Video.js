@@ -6,7 +6,7 @@ const Video = ({src, className}) => {
     videoRef.current.play();
   }, [])
   return (
-    <video ref={videoRef} loop={"loop"} muted={"muted"} playsinline="" className={className}>
+    <video ref={videoRef} loop={"loop"} muted={"muted"} playsInlinegit="" className={className}>
       <source src={src} type="video/mp4" />
     </video>
   )
